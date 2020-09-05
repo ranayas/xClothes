@@ -1,0 +1,205 @@
+:root {
+  --header-height: 60px
+}
+
+body {
+  font-family: "Noto Sans";
+}
+
+/* HEADER */
+
+input[type="checkbox"] {
+  display: none;
+}
+
+.u-wrapper {
+  padding: 0 1em;
+  margin: auto;
+  max-width: 1140px;
+}
+
+.header {
+  background: white;
+  position: sticky;
+  top: 0;
+  font-family: 'Montserrat';
+  font-weight: bold;
+  z-index: 2;
+}
+
+.header-content {
+  background: white;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  transition: all 3s ease;
+}
+
+.header-logo a {
+  text-decoration: none;
+  color: black;
+  display: flex;
+  height: 100%;
+  text-align: center;
+  align-items: center;
+  font-size: 2em;
+}
+
+.header-logo a i {
+  padding-right: .5em;
+}
+
+.header-content-fixed {
+  display: flex;
+  align-items: center;
+}
+
+.menu {
+  text-align: center;
+  font-weight: normal;
+  ;
+}
+
+.menu ul {
+  list-style: none;
+  padding: 0 0;
+  display: flex;
+  margin: 0;
+  height: var(--header-height);
+}
+
+.menu ul li a {
+  font-size: 1em;
+  text-decoration: none;
+  color: black;
+  padding: 0 10px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu ul li a.active {
+  font-weight: bold;
+}
+
+.menu-btn {
+  cursor: pointer;
+  display: none;
+}
+
+.menu-btn i {
+  height: var(--header-height);
+  width: var(--header-height);
+  font-size: 1.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (max-width: 768px) {
+  .menu {
+    z-index: -1;
+    position: absolute;
+    background: rgba(255, 255, 255, 0);
+    height: calc(100vh - var(--header-height));
+    left: 0;
+    right: 0;
+    bottom: 0;
+    visibility: hidden;
+    transition: all .3s ease;
+  }
+
+  .menu-checkbox:checked~.header .menu {
+    visibility: visible;
+    background: rgba(255, 255, 255, .9);
+    transform: translateY(calc(100vh - var(--header-height)));
+    transition: all .3s ease;
+  }
+
+  .menu-checkbox:checked~.header .header-content {
+    background: rgba(255, 255, 255, .0);
+    transition: all .3s ease;
+  }
+
+  .menu-checkbox:checked~.header {
+    background: rgba(255, 255, 255, .9);
+
+  }
+
+  .menu-checkbox:checked~.header .menu-btn i:before {
+    content: "\f00d";
+  }
+
+  .menu-btn {
+    display: block;
+  }
+
+  .menu ul {
+    display: block;
+    padding: 1em 0;
+  }
+
+  .menu ul li a {
+    padding: 1em 0;
+  }
+}
+
+.hero {
+  padding: 1em 0;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-areas: "hero-content hero-image-container";
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+
+.hero-title {
+  font-family: 'Montserrat';
+  font-size: 4em;
+}
+
+.hero-description {
+  line-height: 2em;
+}
+
+.hero-image-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-image {
+  width: 50vw;
+  max-width: 570px;
+}
+
+@media screen and (max-width: 768px) {
+  .hero-grid {
+    grid-template-areas: "hero-image-container"
+      "hero-content";
+
+  }
+
+  .hero-content {
+    order: 2;
+    text-align: center;
+  }
+
+  .hero-image-container {
+    order: 1;
+  }
+
+  .hero-image {
+    width: 100%;
+  }
+}
